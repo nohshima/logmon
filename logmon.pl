@@ -85,6 +85,7 @@ my ( $tail_num, $target, $message, $action, $new_action, $line );
                 if ( $_ =~ m/$message/ ) {
                     foreach $action ( @{$Config{ $target }->{ $message }} ) {
                         $line = $_;
+                        $line =~ s/\\/\\\\/g;
                         $line =~ s/\"/\\\"/g;
                         $new_action = $action;
                         $new_action =~ s/<%%%%>/$line/g;
